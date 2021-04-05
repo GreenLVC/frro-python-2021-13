@@ -7,7 +7,15 @@ def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float,
     """Toma una lista de enteros y strings y devuelve una lista con todos los
     elementos numéricos al final.
     """
-    pass # Completar
+    a = []
+    b = []
+    for i in lista:
+        if type (i) == str:
+           a.append(i) 
+        else:
+            b.append(i)
+    c = a + b
+    return c
 
 
 # NO MODIFICAR - INICIO
@@ -20,7 +28,10 @@ assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 
 
 def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """Re-escribir utilizando comprensión de listas."""
-    pass # Completar
+    a = [i for i in lista if type(i) == str]
+    b = [i for i in lista if type(i) != str]
+    c = a + b
+    return c
 
 
 # NO MODIFICAR - INICIO
@@ -35,7 +46,8 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     """Re-escribir utilizando la función sorted con una custom key.
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
-    pass # Completar
+    a = sorted(lista, key=lambda i: type(i) != int, reverse = True)
+    return a
 
 
 # NO MODIFICAR - INICIO
