@@ -55,7 +55,10 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
     Restricción: La función no debe tomar parámetros y por lo tanto se
     recomienda usar partial.
     """
-    pass # Completar
+    def multiply(x, y):
+        return x * y
+    dbl = partial(multiply, 2)
+    return dbl(4), calcular_posibilidades(dbl)
 
 
 # NO MODIFICAR - INICIO

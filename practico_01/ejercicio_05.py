@@ -11,9 +11,9 @@ def multiplicar_basico(numeros: Iterable[float]) -> float:
     """
     if len(numeros) == 0:
         return 0
-    n =1
+    n = 1
     for num in numeros:
-        n = num * n
+        n *= num
     return n
 
 
@@ -38,7 +38,7 @@ def multiplicar_reduce(numeros: Iterable[float]) -> float:
     """
     if len(numeros) == 0:
         return 0
-    return functools.reduce( lambda x , y:x * y, numeros)
+    return functools.reduce(lambda x, y: x * y, numeros)
 
 
 # NO MODIFICAR - INICIO
