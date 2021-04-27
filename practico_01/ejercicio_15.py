@@ -196,20 +196,22 @@ sucesivas.
 @memoized
 def calcular_posibilidades_recursiva(lista: Sequence[int], limite: int) -> int:
     """Re-Escribir de manera recursiva"""
-    res = []
-    p = ()
-    a, *b = lista
-    if [i for i in lista if i == limite]:
-        res.append(tuple(p))
-    else:
-        for x in range(1, limite + 1):
-            if x not in p:
-                p[i] = x
-                calcular_posibilidades_recursiva(p, i + 1, n, res)
-                p[i] = 0
+    limite -= 1
 
+    def permuta(lis: Sequence[int], lim: int):
+        if lim == 0:
+            return 1
+        cont = 0
+        for _ in permutations(lis, lim):
+            cont += 1
+        cont += permuta(lis, limite - 1)
+        return cont
+
+    return permuta(lista, limite)
 
 # NO MODIFICAR - INICIO
+
+
 if __name__ == "__main__":
     print()
 
