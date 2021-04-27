@@ -8,7 +8,7 @@ def es_palindromo(palabra: str) -> bool:
     Restricción: No utilizar bucles - Usar Slices de listas.
     Referencia: https://docs.python.org/3/tutorial/introduction.html#lists
     """
-    reverso = palabra[0:]
+    reverso = palabra[::-1]
     if palabra == reverso:
         return True
     return False

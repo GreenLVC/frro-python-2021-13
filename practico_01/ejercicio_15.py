@@ -55,16 +55,20 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
     Restricción: La función no debe tomar parámetros y por lo tanto se
     recomienda usar partial.
     """
-    def multiply(x, y):
-        return x * y
-    dbl = partial(multiply, 2)
-    return dbl(4), calcular_posibilidades(dbl)
+    comienzo = perf_counter()
+    f = partial(func)
+    resultado = f()
+    final = perf_counter() - comienzo
+    fin = (resultado, final)
+    return fin
 
 
 # NO MODIFICAR - INICIO
 result, elapsed = medir_tiempo(partial(calcular_posibilidades, lista, limite))
 print(f"Tiempo: {elapsed:2.2f} segundos - Usando Partial")
 assert result == 28671512
+
+
 # NO MODIFICAR - FIN
 
 
@@ -76,7 +80,14 @@ def medir_tiempo(func: Callable[[Sequence[int], int], int]) -> Callable[[Sequenc
     partial. En este caso se debe devolver una función que devuelva la tupla y
     tome una cantidad arbitraria de parámetros.
     """
-    pass # Completar
+    comienzo = perf_counter()
+
+    def funcion(lista: Sequence[int], lim: int) -> Tuple[int, float]:
+        resultado = func(lista, lim)
+        fin = perf_counter()-comienzo
+        tup = (resultado, fin)
+        return tup
+    return funcion
 
 
 # NO MODIFICAR - INICIO
@@ -124,13 +135,24 @@ resultados de funciones que son muy costosas computacionalmente. A este
 patrón se lo suele denominar memoized
 """
 
-
 def memoized(func):
     """Escribir una función memoized y utilizarla como decorador junto con medir_
     tiempo para la función calcular posibilidades. Prestar atención a los tiempo
     de ejecución
     """
-    pass # Completar
+    cache = dict()
+    resu = func
+
+    def mem_func(arg: int) -> int:
+        if arg in cache:
+            return cache[arg]
+        res = arg
+        cache[arg] = res
+        return res
+
+    return mem_func(resu)
+
+
 
 
 @medir_tiempo
@@ -174,7 +196,17 @@ sucesivas.
 @memoized
 def calcular_posibilidades_recursiva(lista: Sequence[int], limite: int) -> int:
     """Re-Escribir de manera recursiva"""
-    pass # Completar
+    res = []
+    p = ()
+    a, *b = lista
+    if [i for i in lista if i == limite]:
+        res.append(tuple(p))
+    else:
+        for x in range(1, limite + 1):
+            if x not in p:
+                p[i] = x
+                calcular_posibilidades_recursiva(p, i + 1, n, res)
+                p[i] = 0
 
 
 # NO MODIFICAR - INICIO

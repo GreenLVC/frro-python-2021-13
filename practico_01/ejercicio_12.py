@@ -47,13 +47,10 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
     """Re-Escribir utilizando enumerate y agregando un nuevo componente.
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
-    lista =[]
-    for i, persona in nombres:
-        lista += [persona, precios[i]]
-    for j, lista in enumerate(lista):
-        personas = (lista, ids[j])
-        print(personas)
-
+    tupla = []
+    for i, nombre in enumerate(nombres):
+        tupla.append((nombre, precios[i], ids[i]))
+    return tuple(tupla)
 
 
 # NO MODIFICAR - INICIO
