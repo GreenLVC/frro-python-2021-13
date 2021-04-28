@@ -8,9 +8,7 @@ def es_palindromo(palabra: str) -> bool:
     Restricción: No utilizar bucles - Usar Slices de listas.
     Referencia: https://docs.python.org/3/tutorial/introduction.html#lists
     """
-    if palabra == palabra[::-1] :
-        return True
-    return False
+    return palabra == palabra[::-1]
 
 
 
@@ -22,7 +20,7 @@ assert es_palindromo("")
 
 
 ###############################################################################
-
+import math
 
 def mitad(palabra: str) -> str:
     """Toma un string y devuelve la mitad. Si la longitud es impar, redondear
@@ -31,10 +29,8 @@ def mitad(palabra: str) -> str:
     Restricción: No utilizar bucles - Usar Slices de listas.
     Referencia: https://docs.python.org/3/tutorial/introduction.html#lists
     """
-    if len(palabra) % 2 == 0:
-        return palabra[:len(palabra) // 2]
-    else :
-        return palabra[:(len(palabra) // 2) + 1]
+    a = math.ceil(len(palabra) / 2)
+    return palabra[: a]
 
 # NO MODIFICAR - INICIO
 assert mitad("hello") == "hel"

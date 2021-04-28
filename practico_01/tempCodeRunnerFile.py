@@ -1,1 +1,1 @@
-tuple(lista)
+# NO MODIFICAR - FIN

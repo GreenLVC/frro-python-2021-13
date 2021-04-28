@@ -13,7 +13,7 @@ def multiplicar_basico(numeros: Iterable[float]) -> float:
     if numeros:
         prod = 1
         for element in numeros:
-            prod = prod * element
+            prod *= element
         return prod
     return 0
     

@@ -10,13 +10,13 @@ def es_vocal_if(letra: str) -> bool:
     """
     if letra.lower() == "a":
         return True
-    if letra.lower() == "e":
+    elif letra.lower() == "e":
         return True 
-    if letra.lower() == "i":
+    elif letra.lower() == "i":
         return True
-    if letra.lower() == "o":
+    elif letra.lower() == "o":
         return True
-    if letra.lower() == "u":
+    elif letra.lower() == "u":
         return True
     return False
     
@@ -37,7 +37,7 @@ def es_vocal_if_in(letra: str) -> bool:
     Referencia: https://docs.python.org/3/reference/expressions.html#membership-test-operations
     """
 
-    if letra.lower() in ["a", "e", "i", "o", "u"]: #Toma paréntesis y brackets como correcto
+    if letra.lower() in ["a", "e", "i", "o", "u"]: 
          return True
     return False
 
@@ -53,7 +53,7 @@ assert es_vocal_if_in("A")
 
 def es_vocal_in(letra: str) -> bool:
     """Re-escribir utilizando el operador IN pero sin utilizar IF."""
-    return letra.lower() in ["a", "e", "i", "o", "u"]
+    return letra.lower() in "aeiou" #Python reconoce los carácteres
 
 
 # NO MODIFICAR - INICIO
