@@ -5,6 +5,7 @@ def maximo_basico(a: float, b: float) -> float:
     """Toma dos números y devuelve el mayor.
 
     Restricción: No utilizar la función max"""
+
     if a > b:
         return a
     return b
@@ -23,7 +24,8 @@ def maximo_libreria(a: float, b: float) -> float:
     """Re-escribir utilizando el built-in max.
     Referencia: https://docs.python.org/3/library/functions.html#max
     """
-    return max(a, b)
+    return max(a , b)
+
 
 
 # NO MODIFICAR - INICIO

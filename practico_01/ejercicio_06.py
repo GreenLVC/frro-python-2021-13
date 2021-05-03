@@ -7,15 +7,16 @@ def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float,
     """Toma una lista de enteros y strings y devuelve una lista con todos los
     elementos numéricos al final.
     """
-    lista2 = []
-    lista3 = []
-    for el in lista:
-        if type(el) == int:
-            lista3.append(el)
+
+    a = []
+    b = []
+    for i in lista:
+        if type (i) == str:
+           a.append(i) 
         else:
-            lista2.append(el)
-    lista = lista2 + lista3
-    return lista
+            b.append(i)
+    a.extend(b)
+    return a
 
 
 
@@ -29,10 +30,12 @@ assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 
 
 def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """Re-escribir utilizando comprensión de listas."""
-    lista2 = [el for el in lista if type(el) != int]
-    lista3 = [el for el in lista if type(el) == int]
-    conc_lista = lista2 + lista3
-    return conc_lista
+
+    a = [i for i in lista if type(i) == str]
+    b = [i for i in lista if type(i) != str]
+    a.extend(b)
+    return a
+
 
 
 # NO MODIFICAR - INICIO
@@ -47,8 +50,8 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     """Re-escribir utilizando la función sorted con una custom key.
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
-    lista_final = sorted(lista, key=lambda el: type(el) == int, reverse = False)
-    return lista_final
+    return sorted(lista, key=lambda i: type(i) != str)
+
 
 
 # NO MODIFICAR - INICIO
@@ -63,10 +66,9 @@ def numeros_al_final_filter(lista: List[Union[float, str]]) -> List[Union[float,
     """CHALLENGE OPCIONAL - Re-escribir utilizando la función filter.
     Referencia: https://docs.python.org/3/library/functions.html#filter
     """
-    lista3 = list(filter(lambda el: type(el) != int, lista))
-    lista2 = list(filter(lambda el: type(el) == int, lista))
-    conc_lista = lista3 + lista2
-    return conc_lista
+    a = list(filter(lambda i: type(i) == str, lista))
+    a.extend(list(filter(lambda i: i not in a, lista)))
+    return a
 
 
 # NO MODIFICAR - INICIO
@@ -80,15 +82,17 @@ if __name__ == "__main__":
 
 def numeros_al_final_recursivo(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """CHALLENGE OPCIONAL - Re-escribir de forma recursiva."""
-    a, *b = lista
-    if [i for i in lista if type(i) != int]:
-        if type(a) == int:
-            b.append(a)
-            return numeros_al_final_recursivo(b)
-        else:
-            return [a] + numeros_al_final_recursivo(b)
-    else:
+   
+    if all(type(i) != str for i in lista):      #Comprueba si no hay str
         return lista
+
+    a, *b = lista
+    if type(a) != str:
+        b.append(a)
+        return numeros_al_final_recursivo(b)
+    return [a] + numeros_al_final_recursivo(b)
+           
+
 
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
