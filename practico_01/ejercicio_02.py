@@ -1,4 +1,5 @@
 """Comparaciones Encadenadas, Cantidad Arbitraria de Parámetros, Recursividad."""
+from dask.rewrite import args
 
 
 def maximo_encadenado(a: float, b: float, c: float) -> float:
@@ -7,9 +8,9 @@ def maximo_encadenado(a: float, b: float, c: float) -> float:
     Restricción: Utilizar UNICAMENTE tres IFs y comparaciones encadenadas.
     Referencia: https://docs.python.org/3/reference/expressions.html#comparisons
     """
-    if b <= a >= c:     #Comparación encadenada
-         return a
-    if a <= b >=c:
+    if b < a >= c:
+        return a
+    if a < b >= c:
         return b
     return c
 
@@ -28,8 +29,8 @@ def maximo_cuadruple(a: float, b: float, c: float, d: float) -> float:
     """Re-escribir para que tome 4 parámetros, utilizar la función max.
 
     Referencia: https://docs.python.org/3/library/functions.html#max"""
-    return max(a,b,c,d)
 
+    return max(a, b, c, d)
 
 # NO MODIFICAR - INICIO
 assert maximo_cuadruple(1, 10, 5, -5) == 10
@@ -46,8 +47,7 @@ def maximo_arbitrario(*args) -> float:
     """Re-escribir para que tome una cantidad arbitraria de parámetros.
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#arbitrary-argument-lists
     """
-    return max(args)
-
+    return max(*args)
 
 
 # NO MODIFICAR - INICIO
@@ -61,7 +61,7 @@ assert maximo_arbitrario(24, 9, 18, 30) == 30
 ###############################################################################
 
 
-def maximo_recursivo(*args) -> float:
+def maximo_recursivo(*args):
     """Re-Escribir de forma recursiva."""
     if len(args) > 2:
         fst, *rest = args
@@ -69,8 +69,6 @@ def maximo_recursivo(*args) -> float:
         return maximo_recursivo(fst, rest)
     a,b = args
     return a if a>=b else b
-
-
 
 # NO MODIFICAR - INICIO
 assert maximo_recursivo(1, 10, 5, -5) == 10

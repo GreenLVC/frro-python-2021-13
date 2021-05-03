@@ -10,13 +10,14 @@ def multiplicar_basico(numeros: Iterable[float]) -> float:
 
     Restricciones: No usar bibliotecas auxiliares (Numpy, math, pandas).
     """
+
     if numeros:
         prod = 1
         for element in numeros:
             prod *= element
         return prod
     return 0
-    
+
 
 
 # NO MODIFICAR - INICIO
@@ -42,6 +43,7 @@ def multiplicar_reduce(numeros: Iterable[float]) -> float:
         return reduce(lambda x, y: x*y,numeros)
     return 0
     
+
 
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
