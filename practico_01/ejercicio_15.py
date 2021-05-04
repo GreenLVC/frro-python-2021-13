@@ -55,20 +55,13 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
     Restricción: La función no debe tomar parámetros y por lo tanto se
     recomienda usar partial.
     """
-    comienzo = perf_counter()
-    f = partial(func)
-    resultado = f()
-    final = perf_counter() - comienzo
-    fin = (resultado, final)
-    return fin
+    pass # Completar
 
 
 # NO MODIFICAR - INICIO
 result, elapsed = medir_tiempo(partial(calcular_posibilidades, lista, limite))
 print(f"Tiempo: {elapsed:2.2f} segundos - Usando Partial")
 assert result == 28671512
-
-
 # NO MODIFICAR - FIN
 
 
@@ -80,14 +73,7 @@ def medir_tiempo(func: Callable[[Sequence[int], int], int]) -> Callable[[Sequenc
     partial. En este caso se debe devolver una función que devuelva la tupla y
     tome una cantidad arbitraria de parámetros.
     """
-    comienzo = perf_counter()
-
-    def funcion(lista: Sequence[int], lim: int) -> Tuple[int, float]:
-        resultado = func(lista, lim)
-        fin = perf_counter()-comienzo
-        tup = (resultado, fin)
-        return tup
-    return funcion
+    pass # Completar
 
 
 # NO MODIFICAR - INICIO
@@ -135,24 +121,13 @@ resultados de funciones que son muy costosas computacionalmente. A este
 patrón se lo suele denominar memoized
 """
 
+
 def memoized(func):
     """Escribir una función memoized y utilizarla como decorador junto con medir_
     tiempo para la función calcular posibilidades. Prestar atención a los tiempo
     de ejecución
     """
-    cache = dict()
-    resu = func
-
-    def mem_func(arg: int) -> int:
-        if arg in cache:
-            return cache[arg]
-        res = arg
-        cache[arg] = res
-        return res
-
-    return mem_func(resu)
-
-
+    pass # Completar
 
 
 @medir_tiempo
@@ -196,22 +171,10 @@ sucesivas.
 @memoized
 def calcular_posibilidades_recursiva(lista: Sequence[int], limite: int) -> int:
     """Re-Escribir de manera recursiva"""
-    limite -= 1
+    pass # Completar
 
-    def permuta(lis: Sequence[int], lim: int):
-        if lim == 0:
-            return 1
-        cont = 0
-        for _ in permutations(lis, lim):
-            cont += 1
-        cont += permuta(lis, limite - 1)
-        return cont
-
-    return permuta(lista, limite)
 
 # NO MODIFICAR - INICIO
-
-
 if __name__ == "__main__":
     print()
 
