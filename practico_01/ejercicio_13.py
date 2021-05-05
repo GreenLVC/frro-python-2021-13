@@ -8,7 +8,6 @@ función dentro de otra y permite comportamiento que sería imposible lograr de
 otra manera.
 """
 
-
 from typing import Iterator, Callable
 
 
@@ -21,7 +20,13 @@ def generar_pares_clousure(initial: int = 0) -> Callable[[], int]:
         - Usar closures
         - Usar el modificador nonlocal
     """
-    pass # Completar
+    def llamada():
+        nonlocal i
+        i += 2
+        return i
+    i = initial - 2
+    return llamada
+
 
 
 # NO MODIFICAR - INICIO
@@ -45,14 +50,18 @@ def generar_pares_generator(initial: int = 0) -> Iterator[int]:
     """Re-Escribir utilizando Generadores
     Referencia: https://docs.python.org/3/howto/functional.html?highlight=generator#generators
     """
-    pass # Completar
-
+    par = initial
+    while True:
+        yield par
+        par += 2
 
 # NO MODIFICAR - INICIO
 generador_pares = generar_pares_generator()
 assert next(generador_pares) == 0
 assert next(generador_pares) == 2
 assert next(generador_pares) == 4
+
+
 # NO MODIFICAR - FIN
 
 
@@ -61,7 +70,7 @@ assert next(generador_pares) == 4
 
 def generar_pares_generator_send(initial: int = 0) -> Iterator[int]:
     """CHALLENGE OPCIONAL: Re-Escribir utilizando send para saltear numeros"""
-    pass # Completar
+    pass ##completar
 
 
 # NO MODIFICAR - INICIO
@@ -74,6 +83,8 @@ if __name__ == "__main__":
     assert next(generador_pares) == 12
     assert next(generador_pares) == 14
     assert next(generador_pares) == 16
+
+
 # NO MODIFICAR - FIN
 
 
@@ -82,7 +93,17 @@ if __name__ == "__main__":
 
 def generar_pares_delegados(initial: int = 0) -> Iterator[int]:
     """CHALLENGE OPCIONAL: Re-Escribir utilizando Generadores delegados (yield from)"""
-    pass # Completar
+    while True:
+        if initial % 2:
+            initial += 1
+        val = yield from siguientes(initial)
+        if val is not None:
+            initial = val
+
+        def siguientes(init: int) -> Iterator[int]:
+            while True:
+                yield init
+                init+2
 
 
 # NO MODIFICAR - INICIO
