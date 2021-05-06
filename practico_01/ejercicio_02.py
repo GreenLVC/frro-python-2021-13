@@ -1,5 +1,4 @@
 """Comparaciones Encadenadas, Cantidad Arbitraria de Parámetros, Recursividad."""
-from dask.rewrite import args
 
 
 def maximo_encadenado(a: float, b: float, c: float) -> float:
