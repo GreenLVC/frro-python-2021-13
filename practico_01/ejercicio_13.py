@@ -28,7 +28,6 @@ def generar_pares_clousure(initial: int = 0) -> Callable[[], int]:
     return llamada
 
 
-
 # NO MODIFICAR - INICIO
 generador_pares = generar_pares_clousure(0)
 assert generador_pares() == 0
@@ -54,6 +53,7 @@ def generar_pares_generator(initial: int = 0) -> Iterator[int]:
     while True:
         yield par
         par += 2
+
 
 # NO MODIFICAR - INICIO
 generador_pares = generar_pares_generator()

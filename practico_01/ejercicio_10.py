@@ -24,10 +24,11 @@ assert tiene_pares_basico([1, 3, 5, 600]) is True
 
 def tiene_pares_for_else(numeros: Iterable[int]) -> bool:
     """Re-Escribir utilizando for-else con dos return y un break.
-    Referencia: https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops
-    """
+    Referencia: https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-
+    loops"""
     for i in numeros:
-        if i % 2 == 0: break
+        if i % 2 == 0:
+            break
     else: 
         return False
     return True

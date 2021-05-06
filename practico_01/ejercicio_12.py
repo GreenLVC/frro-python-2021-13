@@ -22,13 +22,11 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
 
     a = []
     for i in range(len(nombres)):
-        a.append((nombres[i],precios[i]),)
+        a.append((nombres[i], precios[i]),)
     return tuple(a)
 
 
-
 # NO MODIFICAR - INICIO
-
 respuesta = (
     ("ventana", 100.48),
     ("lámpara", 16.42),
@@ -54,7 +52,6 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
     for i, nom in enumerate(nombres):
         a.append((nom, precios [i], ids[i]))
     return tuple(a)
-
 
 
 # NO MODIFICAR - INICIO
