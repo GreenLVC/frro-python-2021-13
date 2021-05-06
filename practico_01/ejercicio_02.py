@@ -31,6 +31,7 @@ def maximo_cuadruple(a: float, b: float, c: float, d: float) -> float:
 
     return max(a, b, c, d)
 
+
 # NO MODIFICAR - INICIO
 assert maximo_cuadruple(1, 10, 5, -5) == 10
 assert maximo_cuadruple(4, 9, 18, 6) == 18
@@ -47,7 +48,6 @@ def maximo_arbitrario(*args) -> float:
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#arbitrary-argument-lists
     """
     return max(*args)
-
 
 
 # NO MODIFICAR - INICIO
@@ -70,6 +70,7 @@ def maximo_recursivo(*args) -> float:
     elif len(args) == 2:
         a,b = args
         return a if a >= b else b
+
 
 # NO MODIFICAR - INICIO
 assert maximo_recursivo(1, 10, 5, -5) == 10
