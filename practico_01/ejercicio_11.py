@@ -93,7 +93,6 @@ suma_numeros_al_cubo_pares = reduce(lambda x, y : x + y, numeros_al_cubo_pares)
 
 numeros_ordenada = sorted(numeros, key=lambda x: not x % 2)
 
-numeros_ordenada = sorted(numeros, key=lambda x : x % 2 != 0)
 
 
 # NO MODIFICAR - INICIO
