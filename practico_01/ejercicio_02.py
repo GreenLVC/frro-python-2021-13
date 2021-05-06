@@ -68,8 +68,9 @@ def maximo_recursivo(*args):
         fst, *rest = args
         rest = maximo_recursivo(*rest)
         return maximo_recursivo(fst, rest)
-    a,b = args
-    return a if a>=b else b
+    elif len(args) == 2:
+        a,b = args
+        return a if a >= b else b
 
 # NO MODIFICAR - INICIO
 assert maximo_recursivo(1, 10, 5, -5) == 10
