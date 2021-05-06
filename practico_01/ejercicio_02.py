@@ -29,8 +29,8 @@ def maximo_cuadruple(a: float, b: float, c: float, d: float) -> float:
     """Re-escribir para que tome 4 parámetros, utilizar la función max.
 
     Referencia: https://docs.python.org/3/library/functions.html#max"""
-    return max(a, b, c, d)
 
+    return max(a, b, c, d)
 
 # NO MODIFICAR - INICIO
 assert maximo_cuadruple(1, 10, 5, -5) == 10
@@ -50,6 +50,7 @@ def maximo_arbitrario(*args) -> float:
     return max(*args)
 
 
+
 # NO MODIFICAR - INICIO
 assert maximo_arbitrario(1, 10, 5, -5) == 10
 assert maximo_arbitrario(4, 9, 18, 6) == 18
@@ -63,14 +64,13 @@ assert maximo_arbitrario(24, 9, 18, 30) == 30
 
 def maximo_recursivo(*args):
     """Re-Escribir de forma recursiva."""
-    if len(args)==2:
-        a ,b = args
+    if len(args) > 2:
+        fst, *rest = args
+        rest = maximo_recursivo(*rest)
+        return maximo_recursivo(fst, rest)
+    elif len(args) == 2:
+        a,b = args
         return a if a >= b else b
-    primero, *resto = args
-    resto=maximo_recursivo(*resto)
-    return maximo_recursivo(primero, resto)
-
-
 
 # NO MODIFICAR - INICIO
 assert maximo_recursivo(1, 10, 5, -5) == 10
