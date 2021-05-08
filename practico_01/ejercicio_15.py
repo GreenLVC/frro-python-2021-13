@@ -84,7 +84,7 @@ def medir_tiempo(func: Callable[[Sequence[int], int], int]) -> Callable[[Sequenc
 
     def funcion(lista: Sequence[int], lim: int) -> Tuple[int, float]:
         resultado = func(lista, lim)
-        fin = perf_counter()-comienzo
+        fin = perf_counter() - comienzo
         tup = (resultado, fin)
         return tup
     return funcion
@@ -135,6 +135,7 @@ resultados de funciones que son muy costosas computacionalmente. A este
 patrón se lo suele denominar memoized
 """
 
+
 def memoized(func):
     """Escribir una función memoized y utilizarla como decorador junto con medir_
     tiempo para la función calcular posibilidades. Prestar atención a los tiempo
@@ -151,8 +152,6 @@ def memoized(func):
         return res
 
     return mem_func(resu)
-
-
 
 
 @medir_tiempo

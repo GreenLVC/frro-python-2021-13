@@ -68,7 +68,7 @@ def maximo_recursivo(*args) -> float:
         rest = maximo_recursivo(*rest)
         return maximo_recursivo(fst, rest)
     elif len(args) == 2:
-        a,b = args
+        a, b = args
         return a if a >= b else b
 
 

@@ -36,7 +36,7 @@ def multiplicar_reduce(numeros: Iterable[float]) -> float:
     Referencia: https://docs.python.org/3.8/library/functools.html#functools.reduce
     """
     if numeros:
-        return reduce(lambda x, y: x*y, numeros)
+        return reduce(lambda x, y: x * y, numeros)
     return 0
 
 

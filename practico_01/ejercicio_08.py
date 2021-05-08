@@ -2,7 +2,6 @@
 
 from typing import Any, Iterable
 
-
 def superposicion_basico(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     """Toma dos listas y devuelve un booleano en base a si tienen al menos 1
     elemento en común.
@@ -28,7 +27,6 @@ assert not superposicion_basico(test_list, (2, "world", 30.85))
 
 def superposicion_in(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     """Re-Escribir utilizando un sólo bucle y el operador IN."""
-     
     for i in lista_1:
         if i in lista_2:
             return True
@@ -68,7 +66,7 @@ def superposicion_set(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     """
     set_1 = set(lista_1)
     set_2 = set(lista_2)
-    if set_1.intersection(set_2): 
+    if set_1.intersection(set_2):
         return True
     return False
 

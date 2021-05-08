@@ -7,12 +7,11 @@ def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float,
     """Toma una lista de enteros y strings y devuelve una lista con todos los
     elementos numéricos al final.
     """
-
     a = []
     b = []
     for i in lista:
         if type(i) == str:
-           a.append(i) 
+            a.append(i)
         else:
             b.append(i)
     a.extend(b)
@@ -29,7 +28,6 @@ assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 
 
 def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """Re-escribir utilizando comprensión de listas."""
-
     a = [i for i in lista if type(i) == str]
     b = [i for i in lista if type(i) != str]
     a.extend(b)
@@ -79,7 +77,6 @@ if __name__ == "__main__":
 
 def numeros_al_final_recursivo(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """CHALLENGE OPCIONAL - Re-escribir de forma recursiva."""
-   
     if all(type(i) != str for i in lista):
         return lista
 

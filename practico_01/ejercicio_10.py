@@ -29,7 +29,7 @@ def tiene_pares_for_else(numeros: Iterable[int]) -> bool:
     for i in numeros:
         if i % 2 == 0:
             break
-    else: 
+    else:
         return False
     return True
 
@@ -48,7 +48,7 @@ def tiene_pares_any(numeros: Iterable[int]) -> bool:
     """Re-Escribir utilizando la función any, sin utilizar bucles.
     Referencia: https://docs.python.org/3/library/functions.html#any
     """
-    return any(i for i in numeros if i % 2 == 0)  
+    return any(i for i in numeros if i % 2 == 0)
 
 
 # NO MODIFICAR - INICIO

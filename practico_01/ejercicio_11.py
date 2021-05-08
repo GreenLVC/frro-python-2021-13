@@ -83,7 +83,7 @@ numeros_al_cubo_pares = list(filter(lambda num: not num % 2, numeros_al_cubo))
 from functools import reduce
 
 
-suma_numeros_al_cubo_pares = reduce(lambda x, y : x + y, numeros_al_cubo_pares)
+suma_numeros_al_cubo_pares = reduce(lambda x, y: x + y, numeros_al_cubo_pares)
 
 
 # Escribir una función Lambda que permita ordenar los elementos de la numeros

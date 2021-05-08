@@ -50,7 +50,7 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
     a = []
     for i, nom in enumerate(nombres):
-        a.append((nom, precios [i], ids[i]))
+        a.append((nom, precios[i], ids[i]))
     return tuple(a)
 
 
@@ -75,7 +75,7 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
     """Re-Escribir utilizando zip.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
-    return tuple(zip(nombres,precios,ids))
+    return tuple(zip(nombres, precios, ids))
 
 
 # NO MODIFICAR - INICIO
