@@ -84,7 +84,7 @@ def numeros_al_final_recursivo(lista: List[Union[float, str]]) -> List[Union[flo
         b.append(a)
         return numeros_al_final_recursivo(b)
     return [a] + numeros_al_final_recursivo(b)
-           
+
 
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
