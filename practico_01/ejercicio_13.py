@@ -60,8 +60,6 @@ generador_pares = generar_pares_generator()
 assert next(generador_pares) == 0
 assert next(generador_pares) == 2
 assert next(generador_pares) == 4
-
-
 # NO MODIFICAR - FIN
 
 
@@ -70,7 +68,10 @@ assert next(generador_pares) == 4
 
 def generar_pares_generator_send(initial: int = 0) -> Iterator[int]:
     """CHALLENGE OPCIONAL: Re-Escribir utilizando send para saltear numeros"""
-    pass ##completar
+    par = initial
+    while True:
+        yield par
+        par = par.send(2)
 
 
 # NO MODIFICAR - INICIO
@@ -83,8 +84,6 @@ if __name__ == "__main__":
     assert next(generador_pares) == 12
     assert next(generador_pares) == 14
     assert next(generador_pares) == 16
-
-
 # NO MODIFICAR - FIN
 
 
@@ -96,15 +95,9 @@ def generar_pares_delegados(initial: int = 0) -> Iterator[int]:
     while True:
         if initial % 2:
             initial += 1
-        val = yield from siguientes(initial)
+        val = yield from generar_pares_generator_send(initial)
         if val is not None:
             initial = val
-
-        def siguientes(init: int) -> Iterator[int]:
-            while True:
-                yield init
-                init+2
-
 
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
