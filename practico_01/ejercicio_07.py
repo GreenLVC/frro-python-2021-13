@@ -36,7 +36,6 @@ def mitad(palabra: str) -> str:
         return palabra[:(a // 2) + 1]
 
 
-
 # NO MODIFICAR - INICIO
 assert mitad("hello") == "hel"
 assert mitad("Moon") == "Mo"
