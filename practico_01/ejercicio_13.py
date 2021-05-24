@@ -99,6 +99,7 @@ def generar_pares_delegados(initial: int = 0) -> Iterator[int]:
         if val is not None:
             initial = val
 
+
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
     generador_pares = generar_pares_delegados()
