@@ -92,12 +92,6 @@ if __name__ == "__main__":
 
 def generar_pares_delegados(initial: int = 0) -> Iterator[int]:
     """CHALLENGE OPCIONAL: Re-Escribir utilizando Generadores delegados (yield from)"""
-
-    def siguientes(init: int) -> Iterator[int]:
-        while True:
-            yield init
-            init + 2
-
     while True:
         if initial % 2:
             initial += 1

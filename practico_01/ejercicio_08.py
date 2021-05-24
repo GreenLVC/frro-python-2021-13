@@ -67,9 +67,7 @@ def superposicion_set(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     """
     set_1 = set(lista_1)
     set_2 = set(lista_2)
-    if set_1.intersection(set_2):
-        return True
-    return False
+    return set_1.intersection(set_2):
 
 
 # NO MODIFICAR - INICIO
