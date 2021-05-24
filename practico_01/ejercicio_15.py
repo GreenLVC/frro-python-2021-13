@@ -67,8 +67,6 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
 result, elapsed = medir_tiempo(partial(calcular_posibilidades, lista, limite))
 print(f"Tiempo: {elapsed:2.2f} segundos - Usando Partial")
 assert result == 28671512
-
-
 # NO MODIFICAR - FIN
 
 
@@ -198,8 +196,6 @@ def calcular_posibilidades_recursiva(lista: Sequence[int], limite: int) -> int:
     pass  # Completar
 
 # NO MODIFICAR - INICIO
-
-
 if __name__ == "__main__":
     print()
 
