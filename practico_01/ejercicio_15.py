@@ -55,7 +55,12 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
     Restricción: La función no debe tomar parámetros y por lo tanto se
     recomienda usar partial.
     """
-    pass # Completar
+    comienzo = perf_counter()
+    f = partial(func)
+    resultado = f()
+    final = perf_counter() - comienzo
+    fin = (resultado, final)
+    return fin
 
 
 # NO MODIFICAR - INICIO
@@ -73,7 +78,14 @@ def medir_tiempo(func: Callable[[Sequence[int], int], int]) -> Callable[[Sequenc
     partial. En este caso se debe devolver una función que devuelva la tupla y
     tome una cantidad arbitraria de parámetros.
     """
-    pass # Completar
+    comienzo = perf_counter()
+
+    def funcion(lista: Sequence[int], lim: int) -> Tuple[int, float]:
+        resultado = func(lista, lim)
+        fin = perf_counter() - comienzo
+        tup = (resultado, fin)
+        return tup
+    return funcion
 
 
 # NO MODIFICAR - INICIO
@@ -127,7 +139,17 @@ def memoized(func):
     tiempo para la función calcular posibilidades. Prestar atención a los tiempo
     de ejecución
     """
-    pass # Completar
+    cache = dict()
+    resu = func
+
+    def mem_func(arg: int) -> int:
+        if arg in cache:
+            return cache[arg]
+        res = arg
+        cache[arg] = res
+        return res
+
+    return mem_func(resu)
 
 
 @medir_tiempo
@@ -171,7 +193,7 @@ sucesivas.
 @memoized
 def calcular_posibilidades_recursiva(lista: Sequence[int], limite: int) -> int:
     """Re-Escribir de manera recursiva"""
-    pass # Completar
+    pass  # Completar
 
 
 # NO MODIFICAR - INICIO
