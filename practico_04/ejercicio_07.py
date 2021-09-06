@@ -1,8 +1,10 @@
 """Base de Datos SQL - Uso de múltiples tablas"""
 
 import datetime
+import sqlite3
 
 from practico_04.ejercicio_02 import agregar_persona
+from practico_04.ejercicio_04 import buscar_persona
 from practico_04.ejercicio_06 import reset_tabla
 
 
@@ -19,8 +21,26 @@ def agregar_peso(id_persona, fecha, peso):
     Debe devolver:
     - ID del peso registrado.
     - False en caso de no cumplir con alguna validacion."""
+    if not buscar_persona(id_persona):
+        return False
+    db = sqlite3.connect("database.db")
+    cursor = db.cursor()
 
-    pass # Completar
+    script_sql = 'SELECT IdPeso, Fecha FROM PersonaPeso WHERE IdPersona=?'
+    cursor.execute(script_sql, [id_persona, ])
+    for row in cursor.fetchall():
+        if datetime.datetime.strptime(row[1], '%Y-%m-%d %H:%M:%S') >= fecha:
+            return False
+    sql = 'INSERT INTO PersonaPeso (IdPeso, IdPersona, Fecha, Peso) VALUES (null, ?, ?, ?)'
+    cursor.execute(sql, (id_persona, fecha, peso))
+    db.commit()
+    sql = 'SELECT IdPeso FROM PersonaPeso WHERE IdPersona=? and Fecha=?'
+    cursor.execute(sql, [id_persona, fecha])
+    rs = cursor.fetchone()
+    id = rs[0]
+    cursor.close()
+    db.close()
+    return id
 
 
 # NO MODIFICAR - INICIO
@@ -32,6 +52,7 @@ def pruebas():
     assert agregar_peso(200, datetime.datetime(1988, 5, 15), 80) == False
     # Test Registro previo al 2018-05-26
     assert agregar_peso(id_juan, datetime.datetime(2018, 5, 16), 80) == False
+
 
 if __name__ == '__main__':
     pruebas()

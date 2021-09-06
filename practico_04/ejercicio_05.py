@@ -1,6 +1,7 @@
 """Base de Datos SQL - Modificación"""
 
 import datetime
+import sqlite3
 
 from practico_04.ejercicio_01 import reset_tabla
 from practico_04.ejercicio_02 import agregar_persona
@@ -11,7 +12,20 @@ def actualizar_persona(id_persona, nombre, nacimiento, dni, altura):
     """Implementar la funcion actualizar_persona, que actualiza un registro de
     una persona basado en su id. Devuelve un booleano en base a si encontro el
     registro y lo actualizo o no."""
-    pass # Completar
+    db = sqlite3.connect("database.db")
+    cursor = db.cursor()
+
+    script_sql = 'UPDATE Persona SET Nombre = ?, FechaNacimiento = ?, DNI = ?, Altura = ? WHERE IdPersona=?'
+
+    cursor.execute(script_sql, (nombre, nacimiento, dni, altura, id_persona))
+    rs = cursor.rowcount
+    db.commit()
+    cursor.close()
+    db.close()
+    if rs >= 1:
+        return True
+    return False
+
 
 # NO MODIFICAR - INICIO
 @reset_tabla
@@ -20,6 +34,7 @@ def pruebas():
     actualizar_persona(id_juan, 'juan carlos perez', datetime.datetime(1988, 4, 16), 32165497, 181)
     assert buscar_persona(id_juan) == (1, 'juan carlos perez', datetime.datetime(1988, 4, 16), 32165497, 181)
     assert actualizar_persona(123, 'nadie', datetime.datetime(1988, 4, 16), 12312312, 181) is False
+
 
 if __name__ == '__main__':
     pruebas()
