@@ -1,6 +1,7 @@
 """Base de Datos - Creación de Clase en ORM"""
 
 
+from typing import Sequence
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 
@@ -14,6 +15,7 @@ class Socio(Base):
         - apellido: string (longitud 250)
     """
     __tablename__ = 'socios'
-
-    # Completar
-
+    id=Column(Integer,Sequence('socio_seq_id'),primary_key=True)
+    dni=Column(Integer, unique=True)
+    nombre=Column(String(50))
+    apellido=Column(String(250))
